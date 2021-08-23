@@ -1,5 +1,7 @@
 package com.elfz.accountreactiveapi.controller
 
+import com.elfz.accountreactiveapi.domain.Account
+import com.elfz.accountreactiveapi.service.AccountService
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -9,13 +11,12 @@ import reactor.core.publisher.Mono
 @RestController
 @RequestMapping("/reactive")
 class AccountController(
-    private val accountReactiveRepository: AccountReactiveRepository,
     private val accountService: AccountService
 ) {
 
     @PostMapping("/create")
-    fun createAccount(@RequestBody account: Account): Mono<Account> =
+    fun createAccount(@RequestBody account: AccountRequest): Mono<Account> =
         Mono.just(account)
-            .flatMap { accountReactiveRepository.findAccountByCustomerId(it.customerId) }
-            .flatMap { accountService.create(it.partnerAccountId) }
+            .flatMap { accountService.create(it) }
+
 }

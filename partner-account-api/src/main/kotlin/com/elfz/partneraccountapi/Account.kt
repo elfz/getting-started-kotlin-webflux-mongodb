@@ -11,6 +11,7 @@ data class Account(
     val id: String = ObjectId.get().toString(),
     val name: String,
     val description: String,
+    val product: String,
     val createdDate: LocalDateTime = LocalDateTime.now(),
     val modifiedDate: LocalDateTime = LocalDateTime.now()
 )

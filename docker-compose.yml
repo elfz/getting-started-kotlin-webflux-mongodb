@@ -1,7 +1,6 @@
 version: '3'
 
 services:
-
   mongo:
     image: mongo
     environment:
@@ -9,11 +8,12 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: elfz
     ports:
       - "27017:27017"
-    volumes:
-      - ./docker/volumes:/data/db
-    networks:
-      - mongo-compose-network
+#    volumes:
+#      - ./docker/volumes:/data/db
 
 networks:
-  mongo-compose-network:
+  default:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.24.24.0/24

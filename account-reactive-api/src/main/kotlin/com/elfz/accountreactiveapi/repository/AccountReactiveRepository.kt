@@ -1,9 +1,10 @@
-package com.elfz.accountreactiveapi.controller
+package com.elfz.accountreactiveapi.repository
 
+import com.elfz.accountreactiveapi.domain.Account
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import reactor.core.publisher.Mono
 
 interface AccountReactiveRepository : ReactiveMongoRepository<Account, String> {
 
-    fun findAccountByCustomerId(customerId: String): Mono<Account>
+    fun findAccountByClientId(clientId: String): Mono<Account>
 }
