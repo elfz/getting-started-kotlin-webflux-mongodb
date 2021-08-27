@@ -15,6 +15,8 @@ repositories {
     mavenCentral()
 }
 
+val resilience4j = "1.7.1"
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -22,6 +24,9 @@ dependencies {
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("io.github.resilience4j:resilience4j-reactor:$resilience4j")
+    implementation("io.github.resilience4j:resilience4j-circuitbreaker:$resilience4j")
+    // implementation("io.github.resilience4j:resilience4j-kotlin:$resilience4j")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
