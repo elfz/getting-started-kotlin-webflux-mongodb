@@ -1,0 +1,26 @@
+server:
+  port: 8081
+spring:
+  data:
+    mongodb:
+      database: account-api
+      host: localhost
+      password: elfz
+      port: 27017
+      username: root
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      Fefe:
+        slidingWindowSize: 1
+        minimumNumberOfCalls: 1
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
